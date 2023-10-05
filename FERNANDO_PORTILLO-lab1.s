@@ -24,8 +24,8 @@ binary_search:
 	addi $t1, $s1, -1	# set right index (size - 1)
 	j loop			# jump to loop
 	
-loop:	slt $t3, $t1, $t0	# check if a <= b, by checking if b < a
-	bne $t3, $zero, end	# if b < a or a > b, jump to end
+loop:	slt $t3, $t1, $t0	# check if left <= right, by checking if right < left
+	bne $t3, $zero, end	# if left > right, jump to end
 	sub $t2, $t1, $t0	# right - left
 	srl $t2, $t2, 1		# (right - left) / 2
 	add $t2, $t2, $t0	# left - (right - left) / 2 (calculated m)
