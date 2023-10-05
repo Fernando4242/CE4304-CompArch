@@ -1,1 +1,28 @@
+The program performs the Binary Search algorithm written in MIPS. It has 5 main labels main, binary_search, loop, equal, greater, end. 
 
+main - handles the default actions such as loading the base address and storing the size, target, and calculates the array base address.
+
+binary_search - sets up the initial information needed before the loop such as the left and right index and starts the loop.
+
+loop - performs the base of binary search, by performing a unique way of calculating left <= right. If the left > right, it jumps to end. If not, it continues down to calculate the m (middle) by performing m = left + (right - left) / 2. Then proceeds to calculate and load the value in array[m] to check first if target == array[m] to jump into equal. equal stores m into result and jumps to end. If they don't equal, then it checks if target < array[m]. If target < array[m], it continues down to perform right = m - 1 then loop back. If target > array[m], then it jumps to the greater label where it performs left = m + 1, and loops back.
+
+equal - stores m and jumps to end
+
+end - does nothing to signify the end of the program (used mainly for equal and to end the while loop if not found)
+
+
+To better understand the format of loop, since its perhaps the more complicated one. Its supposed to follow the C statements provided below in this specific order:
+
+while (l <= r) { // jumps to end, if not true
+    int m = l + (r - l) / 2;
+ 
+    // jumps to end if true
+    if (arr[m] == x)
+        return m;
+ 
+    // continue down, if true
+    if (target < array[m])
+        r = m - 1;
+    else // jump to greater, if false
+        l = m + 1;
+}
