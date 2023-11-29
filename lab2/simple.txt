@@ -1,0 +1,50 @@
+The purpose of this file is to provide a description of the worked done in the project.
+The worked done can be divided into 4 main parts (files):
+
+1. ALU.v
+2. ALUControl.v
+3. Control.v
+4. TopeLevel.v
+
+Each file had missing parts that needed to be filled in order to complete the circuit.
+Results of the worked done can be found in the results.png file.
+
+ALU.v
+-----
+Filled in the blank to complete the ALU. Specifically, the following operations were implemented:
+
+    //implement other operation here.
+    6'b001: out <= inA - inB; // subtract
+
+To implement such operation, I took into account ALU Control Unit Truth table.
+
+ALUControl.v
+------------
+Filled in the blank to complete the ALU Control Unit. Specifically, the following operations were implemented:
+
+    //implement other operations here.
+	6'b100010: aluFunc <= 3'b001; // subtraction
+
+To implement such operation, I took into account ALU Control Unit Truth table. 
+By doing so, I was able to assign the correct aluFunc for the given operation.
+
+Control.v
+---------
+Filled in the blank to complete the Control. Specifically the following operations were implemented
+
+	// implement control signals for sw, addi and beq here
+	6'b101011: begin regDst <= 1'bx; jump <= 1'b0; aluSrc = 1'b1; memToReg = 1'bx; regWrite = 1'b0; memRead = 1'b0; memWrite = 1'b1; branch = 1'b0; aluOp = 2'b00; end // sw
+	6'b001000: begin regDst <= 1'b0; jump <= 1'b0; aluSrc = 1'b1; memToReg = 1'b0; regWrite = 1'b1; memRead = 1'b0; memWrite = 1'b0; branch = 1'b0; aluOp = 2'b11; end // addi
+	6'b000100: begin regDst <= 1'bx; jump <= 1'b0; aluSrc = 1'b0; memToReg = 1'bx; regWrite = 1'b0; memRead = 1'b0; memWrite = 1'b0; branch = 1'b1; aluOp = 2'b01; end // beq
+
+To implement such operation, I took into account Main Control Unit Truth table. 
+Which helped assign the correct value for each output.
+
+TopLevel.v
+----------
+Filled in the blank to complete the TopLevel. Specifically, adding missing inputs/outputs and creating necessary ones to complete the circuit such as the following wire:
+    
+    wire [1:0] aluOp;
+
+Which was used to connect the ALU Control Unit to the ALU.
+

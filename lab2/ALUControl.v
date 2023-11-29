@@ -12,7 +12,7 @@ module ALUControl(aluOp, opCode, func, aluFunc);
                 6'b100000: aluFunc <= 3'b000; //addition
 					 
                 //implement other operations here.
-					 6'b100010: aluFunc <= 3'b001; // subtraction
+				6'b100010: aluFunc <= 3'b001; // subtraction
  					 
                 default: aluFunc <= 3'bzzz;
             endcase
